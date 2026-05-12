@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mój Mikro-Sklep</title>
+</head>
+<body>
+    <h1>Sklep Mikroserwisowy</h1>
+    <button onclick="loadProducts()">Pobierz Produkty</button>
+    <div id="content"></div>
+
+    <script>
+        async function loadProducts() {
+            const res = await fetch('/api/products');
+            const data = await res.json();
+            document.getElementById('content').innerHTML = 
+                data.map(p => `<p>${p.name} - ${p.price} PLN</p>`).join('');
+        }
+    </script>
+</body>
+</html>
