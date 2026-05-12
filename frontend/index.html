@@ -3,135 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikro-Sklep Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Alledrogo Micro - Twoje zakupy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text: #f8fafc;
+            --allegro-orange: #ff5a00;
+            --bg-gray: #f2f2f2;
+            --text-main: #222;
+            --shadow: 0 1px 4px 0 rgba(0,0,0,.15);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            background-image: radial-gradient(circle at top right, #1e1b4b, transparent),
-                              radial-gradient(circle at bottom left, #1e1b4b, transparent);
-            color: var(--text);
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-gray);
             margin: 0;
+            color: var(--text-main);
+        }
+
+        /* Header / Navbar */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
+            gap: 20px;
+            padding: 0 20px;
         }
 
-        h1 {
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 2rem;
-            background: linear-gradient(to right, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 3rem;
+        .logo {
+            color: var(--allegro-orange);
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
         }
 
-        .btn-load {
-            background: var(--primary);
+        .search-bar {
+            flex-grow: 1;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid var(--allegro-orange);
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-btn {
+            background: var(--allegro-orange);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: 10px 25px;
+            border-radius: 0 4px 4px 0;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-            margin-bottom: 3rem;
         }
 
-        .btn-load:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        #content {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card img {
             width: 100%;
-            max-width: 1000px;
+            height: 180px;
+            object-fit: contain;
+            background: #f9f9f9;
+            margin-bottom: 10px;
         }
 
-        .product-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 24px;
-            transition: border-color 0.3s;
-            text-align: center;
-        }
-
-        .product-card:hover {
-            border-color: var(--primary);
-        }
-
-        .product-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.25rem;
+        .card h3 {
+            font-size: 14px;
+            margin: 5px 0;
+            font-weight: 400;
+            color: #00a79d; /* Kolor linków w Allegro */
+            height: 40px;
+            overflow: hidden;
         }
 
         .price {
-            color: #818cf8;
+            font-size: 22px;
             font-weight: 700;
-            font-size: 1.5rem;
-            display: block;
-            margin-bottom: 1rem;
+            margin: 10px 0;
+        }
+
+        .smart {
+            color: #00a79d;
+            font-weight: 800;
+            font-size: 12px;
+            margin-bottom: 10px;
         }
 
         .buy-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
+            background: #fff;
+            border: 1px solid var(--allegro-orange);
+            color: var(--allegro-orange);
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
         }
 
         .buy-btn:hover {
-            background: var(--primary);
+            background: #fff5f0;
+        }
+
+        /* Floating Cart */
+        .cart-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+
+        .checkout-now {
+            background: var(--allegro-orange);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-top: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <h1>MicroShop v1</h1>
-    
-    <button class="btn-load" onclick="loadProducts()">Odśwież ofertę</button>
-
-    <div id="content">
-        <!-- Produkty wpadną tutaj -->
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">alledrogo</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Czego szukasz?">
+            <button class="search-btn">SZUKAJ</button>
+        </div>
     </div>
+</header>
 
-    <script>
-        async function loadProducts() {
-            try {
-                const res = await fetch('/api/products');
-                const data = await res.json();
-                document.getElementById('content').innerHTML = data.map(p => `
-                    <div class="product-card">
-                        <h3>${p.name}</h3>
-                        <span class="price">${p.price} PLN</span>
-                        <button class="buy-btn" onclick="alert('Dodano do koszyka!')">Do koszyka</button>
-                    </div>
-                `).join('');
-            } catch (e) {
-                alert("Błąd połączenia z mikroserwerem!");
-            }
+<main>
+    <div class="grid" id="content">
+        <!-- Produkty z serwera -->
+    </div>
+</main>
+
+<div class="cart-float" id="cart-ui">
+    <strong>Twój koszyk (<span id="cart-count">0</span>)</strong>
+    <div id="cart-items" style="font-size: 12px; margin: 10px 0; max-height: 100px; overflow-y: auto;"></div>
+    <button class="checkout-now" onclick="checkout()">DO KASY</button>
+</div>
+
+<script>
+    let currentProducts = [];
+    let cart = [];
+
+    async function loadShop() {
+        try {
+            const res = await fetch('/api/products');
+            currentProducts = await res.json();
+            
+            const grid = document.getElementById('content');
+            grid.innerHTML = currentProducts.map(p => `
+                <div class="card">
+                    <img src="https://via.placeholder.com/200?text=PRODUKT" alt="foto">
+                    <h3>${p.name}</h3>
+                    <div class="smart">Alledrogo No-Smart!</div>
+                    <div class="price">${p.price},00 zł</div>
+                    <button class="buy-btn" onclick="addToCart(${p.id})">do koszyka</button>
+                </div>
+            `).join('');
+        } catch (e) {
+            console.error("Błąd ładowania produktów");
         }
-    </script>
+    }
+
+    function addToCart(id) {
+        const product = currentProducts.find(p => p.id === id);
+        if(product) {
+            cart.push(product);
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-items').innerHTML = cart.map(i => `• ${i.name}`).join('<br>');
+        }
+    }
+
+    async function checkout() {
+        if (cart.length === 0) return alert("Pusty koszyk!");
+        
+        try {
+            const response = await fetch('/api/orders/process', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items: cart })
+            });
+            const res = await response.json();
+            alert(res.message);
+            cart = [];
+            document.getElementById('cart-count').innerText = "0";
+            document.getElementById('cart-items').innerText = "";
+        } catch (err) {
+            alert("Błąd mikroserwisu zamówień!");
+        }
+    }
+
+    window.onload = loadShop;
+</script>
+
 </body>
 </html>

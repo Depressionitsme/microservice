@@ -1,0 +1,8 @@
+docker-compose up - terminal block
+
+docker-compose up -d - terminal unblock
+
+docker-compose up --build -d - build up
+
+docker-compose restart gateway - restart api
+
