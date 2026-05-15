@@ -8,4 +8,4 @@ app.post('/api/orders/process', (req, res) => {
     res.json({ message: "Zamówienie przetworzone pomyślnie!" });
 });
 
-app.listen(3001);
+app.listen(3000);
